@@ -6,6 +6,7 @@ function Contact() {
   const [message, setMessage] = useState('');
   const [envoye, setEnvoye] = useState(false);
 
+  // Simule l'envoi et réinitialise les champs
   const handleSubmit = (e) => {
     e.preventDefault();
     setEnvoye(true);
@@ -16,53 +17,71 @@ function Contact() {
 
   return (
     <section className="page-card">
+      <span className="badge">Support</span>
       <h1>Contact</h1>
-      <p>Pour toute question, vous pouvez remplir le formulaire ci-dessous.</p>
 
-      {envoye && (
-        <p className="success-message" role="status">
-          Votre message a bien été envoyé. Merci !
-        </p>
-      )}
+      <div className="contact-layout">
+        <div className="contact-info">
+          <p className="lead">
+            Une question ou une remarque ? Envoyez-nous un message via le formulaire.
+          </p>
+          <div className="info-item">
+            <h3>Coordonnées</h3>
+            <p>Email : contact@monapp-react.edu</p>
+            <p>Horaires : Lun – Ven, 8h30 – 17h00</p>
+            <p>Localisation : Campus IUS — Web 2</p>
+          </div>
+        </div>
 
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <label>
-          Nom
-          <input
-            type="text"
-            value={nom}
-            onChange={(e) => setNom(e.target.value)}
-            placeholder="Votre nom"
-            required
-          />
-        </label>
+        <div>
+          {envoye && (
+            <p className="success-message" role="status">
+              Votre message a bien été envoyé. Merci !
+            </p>
+          )}
 
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="votre.email@exemple.com"
-            required
-          />
-        </label>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <label>
+                Nom
+                <input
+                  type="text"
+                  value={nom}
+                  onChange={(e) => setNom(e.target.value)}
+                  placeholder="Votre nom"
+                  required
+                />
+              </label>
 
-        <label>
-          Message
-          <textarea
-            rows="4"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Votre message..."
-            required
-          />
-        </label>
+              <label>
+                Email
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="nom@exemple.com"
+                  required
+                />
+              </label>
+            </div>
 
-        <button type="submit" className="btn-primary">
-          Envoyer
-        </button>
-      </form>
+            <label>
+              Message
+              <textarea
+                rows="3"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Écrivez votre message..."
+                required
+              />
+            </label>
+
+            <button type="submit" className="btn-primary">
+              Envoyer le message
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
   );
 }

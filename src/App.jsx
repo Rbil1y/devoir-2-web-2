@@ -10,6 +10,7 @@ function App() {
     <div className="app">
       <Navbar />
       <main className="container">
+        {/* Routage côté client sans rechargement */}
         <Routes>
           <Route path="/" element={<Accueil />} />
           <Route path="/a-propos" element={<APropos />} />
@@ -17,6 +18,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <footer className="footer">
+        <p>© 2026 MonApp React — Devoir 2 Développement Web 2</p>
+      </footer>
     </div>
   );
 }
